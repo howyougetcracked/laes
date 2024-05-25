@@ -576,4 +576,4 @@ getgenv().ESP = {
         Fill = false
     }
 }
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/95533033cc5bd0dc175e054f118567f6.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/howyougetcracked/aurora/main/raw"))()
