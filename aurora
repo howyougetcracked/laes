@@ -1,0 +1,579 @@
+getgenv().Script = {
+    Whitelisting = {
+        Key = ""
+    },
+    Preload = {
+        UniversalSupport = false
+    },
+    Labels = {
+        Intro = true,
+        GameStats = false,
+        Watermark = false
+    },
+    Caching = {
+        Threading = { 1, "Heartbeat" },
+        LowPerformance = { -- redacted
+            Enabled = true,
+            AutoDetection = true,
+            ManualDetection = 80,
+            Disables = {
+                "Threading"
+            }
+        },
+        CacheThreads = { Enabled = true, MaxCap = 127, FlushCache = { true, WaitTime = 18 } } -- redacted
+    },
+    WebConfigs = { -- redacted
+        URL = "",
+        Ignored = {
+            "ESP"
+        }
+    }
+}
+--
+getgenv().PluginLogic = {
+    SafeMode = false,
+    Debug = true,
+    MaxHTTPRequests = { true, 10 },
+    Unsafe = { -- undone / not released
+        AllowScriptExecution = true,
+        AllowRemoteInterception = true,
+        AllowReadOnly = true,
+        AllowFlaggedScripts = true
+    }
+}
+--
+getgenv().Keybinds = {
+    Aimbot = "C",
+    Macro = "X",
+    NoClip = "Z",
+    PingSpike = "F",
+    ConsoleClean = "R",
+    InventorySort = "M",
+    GameCrash = "L",
+    ServerRejoin = "Z",
+    ServerHop = "H",
+    PrioritySelect = "T",
+    PriorityClear = "Y",
+    SilentAim = { false, "L" },
+    Panic = { false, "P" },
+    TogglePriorityVisuals = { true, "B" },
+    ToggleBoxFOV = { false, "G" },
+    ToggleAutoBuy = { false, "T"},
+    ToggleAutoReload = { false, "N" },
+    ToggleTriggerbot = { true, "H" }
+}
+--
+getgenv().AimAssist = {
+    Enabled = true,
+    Control = "Camera", -- Mouse, Camera
+    StickyMode = true, 
+    Conditions = {
+        FieldOfView = false,
+        Deadzone = false
+    },
+    HitPoints = {
+        HitType = "", -- Nearest Part
+        BasePart = "HumanoidRootPart",
+    },
+    Camera = {
+        Smoothness = {
+            X = 0.11,
+            Y = 0.11
+        },
+        Sensitivity = { --[REDACTED, being rewrote]
+            X = 0.702,
+            Y = 1
+        }
+    },
+    Mouse = {
+        Smoothness = {
+            X = 0.862,
+            Y = 1
+        },
+        Sensitivity = {
+            X = 0.702,
+            Y = 1
+        }
+    },
+    Prediction = {
+        Enabled = true,
+        Formula = "*", -- * , /
+        V_Origins = {
+            Type = "Vector3", -- Default, Vector3
+            Prediction = 0.1210,
+            Vector3 = {
+                X = 0.12572478241934,
+                Y = 0.125250241,
+                Z = 0.1257251
+            }
+        }
+    }
+}
+--
+getgenv().SilentAim = {
+    Enabled = true,
+    Mode = "FOV",  -- FOV, Target
+    StickyMode = false,
+    HitPoints = {
+        HitType = "Nearest Point", -- Nearest Point, Nearest Part, Blank
+        BasePart = "HumanoidRootPart",
+        NearestPoint = {
+            Fraction = "Scalar" -- Scalar
+        }
+    },
+    Anti_Curve = { -- [REDACTED, BEING REWROET]
+        Enabled = false,
+        Pixels = { X = 3.1, Y = 1.8 }
+    },
+    Prediction = {
+        Enabled = true,
+        Formula = "*", -- * , /
+        V_Origins = {
+            Type = "Vector3", -- Default, Vector3
+            Prediction = 0.129331234,
+            Vector3 = {
+                X = 0.12572478241934,
+                Y = 0.125250241,
+                Z = 0.1257251
+            }
+        }
+    },
+    Remotes = {
+        Remote = function(Endpoint)
+            local Arguments = {
+                [1] = "UpdateMousePos",
+                [2] = Endpoint
+            }
+            local Path = game:GetService("ReplicatedStorage").MainEvent
+            return Arguments, Path
+        end
+    }       
+}
+--
+getgenv().Triggerbot = {
+    Enabled = true,
+    AutoShootInBox = false,
+    Type = "Legit", --[[ Box, Legit, Advanced ]]
+    TargetMode = false,
+    MaxDelay = 0.99,
+    MinDelay = 0.52,
+    MaxSensitivity = 0,
+    MinSensitivity = 0,
+    Tolerance = 500,
+    Prediction = {
+        Default = 0.11,
+        AdjustForAimbot = false
+    },
+    Parts = {
+        "Head",
+        "HumanoidRootPart",
+        "UpperTorso",
+        "LowerTorso"
+    }
+}
+--
+getgenv().AutoBuys = {
+    AutoPurchase = {
+        Revolver = {
+            Enabled = true,
+            Distance = 50,
+            MaxPurchases = { Max = 30, ClearTime = 5 }
+        },
+        TacSG = {
+            Enabled = true,
+            Distance = 50,
+            MaxPurchases = { Max = 30, ClearTime = 5 }
+        },
+        DoubleBarrel = {
+            Enabled = false,
+            Distance = 50,
+            MaxPurchases = { Max = 30, ClearTime = 5 }
+        },
+        MediumArmor = {
+            Enabled = false,
+            Distance = 50,
+            MaxPurchases = { Max = 30, ClearTime = 5 }
+        }
+    }
+}
+--
+getgenv().GunConfigs = {
+    Enabled = false,
+    AutoReload = {
+        Enabled = false,
+        MinimumAmmo = 4
+    },
+    DoubleBarrel = {
+        FOV = false,
+        Smoothness = false,
+        Prediction = false,
+        Triggerbot = false,
+        Config = {
+            Smoothness = { X = 0.00032, Y = 0.0023 },
+            Prediction = { 
+                Aimbot = {
+                    Default = 0.129331234, 
+                    X = 0.129331234, 
+                    Y = 0.129331234, 
+                    Z = 0.129331234
+                },
+                Silent = {
+                    Default = 0.129331234, 
+                    X = 0.13, 
+                    Y = 0.121, 
+                    Z = 0.121
+                }
+            },
+            FOV = {
+                Aimbot = 125,
+                Silent = 26,
+                Deadzone = 13.2
+            },
+            Triggerbot = {
+                MaxDelay = 0.99,
+                MinDelay = 0.1,
+                MaxSensitivity = 0,
+                MinSensitivity = 0,
+                Tolerance = 500,
+                Prediction = {
+                    Default = 0,
+                    AdjustForAimbot = false
+                },
+                Parts = {
+                    "Head",
+                    "UpperTorso",
+                    "LowerTorso"
+                }
+            }
+        }
+    },
+    Revolver = {
+        FOV = false,
+        Smoothness = false,
+        Prediction = false,
+        Triggerbot = false,
+        Config = {
+            Smoothness = { X = 0.00032, Y = 0.0023 },
+            Prediction = { 
+                Aimbot = {
+                    Default = 0.129331234, 
+                    X = 0.12319231, 
+                    Y = 0.119342, 
+                    Z = 0.1192326
+                },
+                Silent = { 
+                    Default = 0.129331234, 
+                    X = 0.12319231, 
+                    Y = 0.119342, 
+                    Z = 0.1192326
+                }
+            },
+            FOV = {
+                Aimbot = 125,
+                Silent = 27.2,
+                Deadzone = 13
+            },
+            Triggerbot = {
+                MaxDelay = 0.99,
+                MinDelay = 0.1,
+                MaxSensitivity = 0,
+                MinSensitivity = 0,
+                Tolerance = 500,
+                Prediction = {
+                    Default = 0,
+                    AdjustForAimbot = false
+                },
+                Parts = {
+                    "Head",
+                    "UpperTorso",
+                    "LowerTorso"
+                }
+            }
+        }
+    },
+    TacSG = {
+        FOV = false,
+        Smoothness = false,
+        Prediction = false,
+        Triggerbot = false,
+        Config = {
+            Smoothness = { X = 0.00032, Y = 0.0023 },
+            Prediction = { 
+                Aimbot = {
+                    Default = 0.113932, 
+                    X = 0.12319231, 
+                    Y = 0.119342, 
+                    Z = 0.1192326
+                },
+                Silent = {
+                    Default = 0.132, 
+                    X = 0.13, 
+                    Y = 0.121, 
+                    Z = 0.121
+                }
+            },
+            FOV = {
+                Aimbot = 125,
+                Silent = 45,
+                Deadzone = 13
+            },
+            Triggerbot = {
+                MaxDelay = 0.99,
+                MinDelay = 0.1,
+                MaxSensitivity = 0,
+                MinSensitivity = 0,
+                Tolerance = 500,
+                Prediction = {
+                    Default = 0,
+                    AdjustForAimbot = false
+                },
+                Parts = {
+                    "Head",
+                    "UpperTorso",
+                    "LowerTorso"
+                }
+            }
+        }
+    },
+    ShotGun = {
+        FOV = false,
+        Smoothness = false,
+        Prediction = false,
+        Triggerbot = false,
+        Config = {
+            Smoothness = { X = 0.00032, Y = 0.0023 },
+            Prediction = { 
+                Aimbot = {
+                    Default = 0.113932, 
+                    X = 0.12319231, 
+                    Y = 0.119342, 
+                    Z = 0.1192326
+                },
+                Silent = {
+                    Default = 0.132, 
+                    X = 0.13, 
+                    Y = 0.121, 
+                    Z = 0.121
+                }
+            },
+            FOV = {
+                Aimbot = 125,
+                Silent = 45,
+                Deadzone = 13
+            },
+            Triggerbot = {
+                MaxDelay = 0.99,
+                MinDelay = 0.1,
+                MaxSensitivity = 0,
+                MinSensitivity = 0,
+                Tolerance = 500,
+                Prediction = {
+                    Default = 0,
+                    AdjustForAimbot = false
+                },
+                Parts = {
+                    "Head",
+                    "UpperTorso",
+                    "LowerTorso"
+                }
+            }
+        }
+    }
+}
+--
+getgenv().Macros = {
+    Enabled = true,
+    GunMacro = { 
+        Enabled = true,
+        Zoom = "Third", -- First, Third
+        Bypass = false
+    },
+    NoClip = {
+        Enabled = false,
+        Delay = 0.08
+    }
+}
+--
+getgenv().Misc = {
+    AntiSit = true,
+    AntiStuck = true,
+    ServerHop = false,
+    ServerRejoin = false,
+    GameCrash = {
+        Enabled = false,
+        Type = "DataModel" -- DataModel, Lag
+    },
+    ConsoleClean = false,
+    Inventory = {
+        Enabled = true,
+        Food = true,
+        Order = {
+            "[Double-Barrel SG]",
+            "[Revolver]",
+            "[TacticalShotgun]"
+        }
+    }
+}
+--
+getgenv().PingSpike = { 
+    Enabled = false,
+    Server = false,
+    Replicate = 0.5,
+    Spike = 100,
+    LagTime = 2
+}
+--
+getgenv().Priority = {
+    Enabled = true,
+    FOV = {
+        Enabled = false,
+        FieldOfView = 60,
+        Color = Color3.fromRGB(255, 255, 255)
+    },
+    Text = {
+        Enabled = false,
+        Position = Vector2.new(100, 100),
+        Color = Color3.fromRGB(196, 130, 179)
+    },
+    Lines = {
+        Enabled = true,
+        Thickness = 1,
+        Color = Color3.fromRGB(196, 130, 179)
+    },
+    Names = {
+        Enabled = true,
+        Size = 13,
+        Color = Color3.fromRGB(196, 130, 179)
+    }
+}
+--
+getgenv().Panel = {
+    Enabled = false,
+    Color = Color3.fromRGB(196, 130, 179),
+    Size = 13,
+    Position = Vector2.new(workspace.CurrentCamera.ViewportSize.X / 2 - 500, workspace.CurrentCamera.ViewportSize.Y / 2 + 100)
+}
+--
+getgenv().CustomVelocity = {
+    X = {
+        DisableX = {
+            Enabled = false,
+            On = { Aimbot = false, SilentAim = false },
+            Conditions = {"On Jump", "On Lethal", "On Abnormal Velocity"}
+        }
+    },
+    Y = {
+        DisableY = {
+            Enabled = false,
+            On = { Aimbot = false, SilentAim = false },
+            Conditions = {"On Jump"}
+        }
+    },
+    Z = {
+        DisableZ = {
+            Enabled = false,
+            On = { Aimbot = false, SilentAim = false },
+            Conditions = {"On Jump", "On Lethal", "On Fakelag", "On Exploit"}
+        }
+    }
+}
+--
+getgenv().Flags = {
+    Team = false,
+    Dead = false,
+    Grabbed = false,
+    Visible = false,
+    AntiAimViewer = true,
+    Resolver = true,
+    EnemyPlayers = {
+        Enabled = false,
+        Action = "Notify", --Webhook, Kick, Notify
+        KickReason = "Failed to connect to the Game. (ID = 17: Connection attempt failed.)",
+        Webhook = "",
+        BlacklistedPlayers = {
+            "divinepws"
+        }
+    }
+}
+-- 
+getgenv().VisualAssist = {
+    Enabled = false,
+    Configuration = {
+        AbsoluteHit = true,
+        Calculation = "Math", -- Ping, Math
+        UnsureChance = 0.0001221, 
+        MouseSuppression = 3,
+        Color = Color3.fromRGB(124, 173, 233),
+        UnsafeColor = Color3.fromRGB(255, 230, 230)
+    }
+}
+--
+getgenv().Field_Of_Views = {
+    FOV_Flags = {
+        Position = "Mouse", -- Mouse, Center
+        Sticky_Mode = false,
+        Visualize_Box = {
+            Enabled = false,
+            FollowPrediction = false,
+          Color = Color3.fromRGB(124, 173, 233),
+            Sizes = { Width = 1.95, Height = 2.19 }
+        }
+    },
+    Aimbot_FOV = {
+        Enabled = false,
+        FieldOfView = 52,
+        Color = Color3.fromRGB(255, 255, 255),
+        BoxFOV = false,
+        JumpFOV = {
+            Enabled = false,
+            FieldOfView = 80
+        }
+    },
+    Silent_FOV = {
+        Enabled = false,
+        FieldOfView = 150,
+        Color = Color3.fromRGB(255, 255, 255),
+        BoxFOV = false,
+        JumpFOV = {
+            Enabled = false,
+            FieldOfView = 80
+        }
+    },
+    Deadzone_FOV = {
+        Enabled = false,
+        FieldOfView = 13.2,
+        Color = Color3.fromRGB(171, 133, 133)
+    }
+}
+--
+getgenv().ESP = {
+    Enabled = false,
+    Flags = {
+        Wall = false,
+        Team = false,
+        DisplayName = false
+    },
+    Name = {
+        Enabled = true,
+        Size = 12,
+        Color = Color3.new(1, 1, 1),
+        ChangeColorOnLock = { true, Color3.fromRGB(124, 173, 233) }
+    },
+    Health = {
+        Enabled = true,
+        Size = 12,
+        Flags = {
+            Prefix = "[]"
+        },
+        Lethal = {
+            Enabled = true,
+            ShowOnHP = 60
+        }
+    },
+    Circle = {
+        Enabled = false,
+        Size = 3,
+        Fill = false
+    }
+}
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/95533033cc5bd0dc175e054f118567f6.lua"))()
