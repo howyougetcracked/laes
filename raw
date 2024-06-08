@@ -1,5 +1,4 @@
 script_key=getgenv().Script.Whitelisting.Key;
-
 ([[
                 This script has been licensed using Luarmor
                   Luarmor v3.8b, Lua whitelisting system
