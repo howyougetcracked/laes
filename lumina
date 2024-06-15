@@ -6,21 +6,21 @@ getgenv().Script = {
         UniversalSupport = false
     },
     Labels = {
-        Intro = true,
+        Intro = false,
         GameStats = false,
         Watermark = false
     },
     Caching = {
         Threading = { 1, "Heartbeat" },
         LowPerformance = { -- redacted
-            Enabled = true,
-            AutoDetection = true,
+            Enabled = false,
+            AutoDetection = false,
             ManualDetection = 80,
             Disables = {
                 "Threading"
             }
         },
-        CacheThreads = { Enabled = true, MaxCap = 127, FlushCache = { true, WaitTime = 18 } } -- redacted
+        CacheThreads = { Enabled = false, MaxCap = 127, FlushCache = { false, WaitTime = 18 } } -- redacted
     },
     WebConfigs = { -- redacted
         URL = "",
@@ -32,13 +32,13 @@ getgenv().Script = {
 --
 getgenv().PluginLogic = {
     SafeMode = false,
-    Debug = true,
-    MaxHTTPRequests = { true, 10 },
+    Debug = false,
+    MaxHTTPRequests = { false, 10 },
     Unsafe = { -- undone / not released
-        AllowScriptExecution = true,
-        AllowRemoteInterception = true,
-        AllowReadOnly = true,
-        AllowFlaggedScripts = true
+        AllowScriptExecution = false,
+        AllowRemoteInterception = false,
+        AllowReadOnly = false,
+        AllowFlaggedScripts = false
     }
 }
 --
@@ -56,17 +56,17 @@ getgenv().Keybinds = {
     PriorityClear = "Y",
     SilentAim = { false, "L" },
     Panic = { false, "P" },
-    TogglePriorityVisuals = { true, "B" },
+    TogglePriorityVisuals = { false, "B" },
     ToggleBoxFOV = { false, "G" },
     ToggleAutoBuy = { false, "T"},
     ToggleAutoReload = { false, "N" },
-    ToggleTriggerbot = { true, "H" }
+    ToggleTriggerbot = { false, "H" }
 }
 --
 getgenv().AimAssist = {
-    Enabled = true,
+    Enabled = false,
     Control = "Camera", -- Mouse, Camera
-    StickyMode = true, 
+    StickyMode = false, 
     Conditions = {
         FieldOfView = false,
         Deadzone = false
@@ -96,7 +96,7 @@ getgenv().AimAssist = {
         }
     },
     Prediction = {
-        Enabled = true,
+        Enabled = false,
         Formula = "*", -- * , /
         V_Origins = {
             Type = "Vector3", -- Default, Vector3
@@ -111,7 +111,7 @@ getgenv().AimAssist = {
 }
 --
 getgenv().SilentAim = {
-    Enabled = true,
+    Enabled = false,
     Mode = "FOV",  -- FOV, Target
     StickyMode = false,
     HitPoints = {
@@ -126,7 +126,7 @@ getgenv().SilentAim = {
         Pixels = { X = 3.1, Y = 1.8 }
     },
     Prediction = {
-        Enabled = true,
+        Enabled = false,
         Formula = "*", -- * , /
         V_Origins = {
             Type = "Vector3", -- Default, Vector3
@@ -151,7 +151,7 @@ getgenv().SilentAim = {
 }
 --
 getgenv().Triggerbot = {
-    Enabled = true,
+    Enabled = false,
     AutoShootInBox = false,
     Type = "Legit", --[[ Box, Legit, Advanced ]]
     TargetMode = false,
@@ -175,12 +175,12 @@ getgenv().Triggerbot = {
 getgenv().AutoBuys = {
     AutoPurchase = {
         Revolver = {
-            Enabled = true,
+            Enabled = false,
             Distance = 50,
             MaxPurchases = { Max = 30, ClearTime = 5 }
         },
         TacSG = {
-            Enabled = true,
+            Enabled = false,
             Distance = 50,
             MaxPurchases = { Max = 30, ClearTime = 5 }
         },
@@ -382,9 +382,9 @@ getgenv().GunConfigs = {
 }
 --
 getgenv().Macros = {
-    Enabled = true,
+    Enabled = false,
     GunMacro = { 
-        Enabled = true,
+        Enabled = false,
         Zoom = "Third", -- First, Third
         Bypass = false
     },
@@ -395,8 +395,8 @@ getgenv().Macros = {
 }
 --
 getgenv().Misc = {
-    AntiSit = true,
-    AntiStuck = true,
+    AntiSit = false,
+    AntiStuck = false,
     ServerHop = false,
     ServerRejoin = false,
     GameCrash = {
@@ -405,8 +405,8 @@ getgenv().Misc = {
     },
     ConsoleClean = false,
     Inventory = {
-        Enabled = true,
-        Food = true,
+        Enabled = false,
+        Food = false,
         Order = {
             "[Double-Barrel SG]",
             "[Revolver]",
@@ -424,7 +424,7 @@ getgenv().PingSpike = {
 }
 --
 getgenv().Priority = {
-    Enabled = true,
+    Enabled = false,
     FOV = {
         Enabled = false,
         FieldOfView = 60,
@@ -436,12 +436,12 @@ getgenv().Priority = {
         Color = Color3.fromRGB(196, 130, 179)
     },
     Lines = {
-        Enabled = true,
+        Enabled = false,
         Thickness = 1,
         Color = Color3.fromRGB(196, 130, 179)
     },
     Names = {
-        Enabled = true,
+        Enabled = false,
         Size = 13,
         Color = Color3.fromRGB(196, 130, 179)
     }
@@ -483,8 +483,8 @@ getgenv().Flags = {
     Dead = false,
     Grabbed = false,
     Visible = false,
-    AntiAimViewer = true,
-    Resolver = true,
+    AntiAimViewer = false,
+    Resolver = false,
     EnemyPlayers = {
         Enabled = false,
         Action = "Notify", --Webhook, Kick, Notify
@@ -499,7 +499,7 @@ getgenv().Flags = {
 getgenv().VisualAssist = {
     Enabled = false,
     Configuration = {
-        AbsoluteHit = true,
+        AbsoluteHit = false,
         Calculation = "Math", -- Ping, Math
         UnsureChance = 0.0001221, 
         MouseSuppression = 3,
@@ -554,19 +554,19 @@ getgenv().ESP = {
         DisplayName = false
     },
     Name = {
-        Enabled = true,
+        Enabled = false,
         Size = 12,
         Color = Color3.new(1, 1, 1),
-        ChangeColorOnLock = { true, Color3.fromRGB(124, 173, 233) }
+        ChangeColorOnLock = { false, Color3.fromRGB(124, 173, 233) }
     },
     Health = {
-        Enabled = true,
+        Enabled = false,
         Size = 12,
         Flags = {
             Prefix = "[]"
         },
         Lethal = {
-            Enabled = true,
+            Enabled = false,
             ShowOnHP = 60
         }
     },
