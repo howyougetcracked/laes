@@ -141,7 +141,7 @@ getgenv().SilentAim = {
     Remotes = {
         Remote = function(Endpoint)
             local Arguments = {
-                [1] = "UpdateMousePos",
+                [1] = "UpdateMousePosI",
                 [2] = Endpoint
             }
             local Path = game:GetService("ReplicatedStorage").MainEvent
